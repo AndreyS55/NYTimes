@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import fetchArticles from '../../actions/index';
 import style from './ArticleList.scss';
 
 class ArticleList extends Component {
+    componentDidMount() {
+        this.props.dispatch(fetchArticles());
+    }
 
     render() {
 
@@ -31,10 +35,10 @@ class ArticleList extends Component {
 
 }
 
-function mapStateToProps(state) {
-    return {
-        article: state.articles
-    }
-}
+const mapStateToProps = state => ({
+    articles: state.articles.items,
+    loading: state.articles.loading,
+    error: state.articles.error
+});
 
 export default connect(mapStateToProps)(ArticleList);
