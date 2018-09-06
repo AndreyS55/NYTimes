@@ -2,7 +2,7 @@ import {
     FETCH_ARTICLES_REQUEST,
     FETCH_ARTICLES_SUCCESS,
     FETCH_ARTICLES_FAILURE
-} from "../actions";
+} from "../actions/index";
 
 const initialState = {
     items: [],

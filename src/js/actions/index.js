@@ -8,12 +8,12 @@ export const fetchArticlesRequest = () => ({
     type: FETCH_ARTICLES_REQUEST
 });
 
-export const fetchArticlesSuccess = () => ({
+export const fetchArticlesSuccess = (articles) => ({
     type: FETCH_ARTICLES_SUCCESS,
     payload: { articles }
 });
 
-export const fetchArticlesFailure = () => ({
+export const fetchArticlesFailure = (error) => ({
     type: FETCH_ARTICLES_FAILURE,
     payload: { error }
 });
@@ -23,8 +23,8 @@ const fetchArticles = () => {
         dispatch(fetchArticlesRequest());
         return NYTApi()
             .then(json => {
-                dispatch (fetchArticlesSuccess(json));
-                return json;
+                dispatch (fetchArticlesSuccess(json.response.docs));
+                return json.response.docs;
             })
             .catch(error => dispatch(fetchArticlesFailure(error)));
     }

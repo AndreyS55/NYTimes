@@ -4,16 +4,30 @@ import fetchArticles from '../../actions/index';
 import style from './ArticleList.scss';
 
 class ArticleList extends Component {
-    componentDidMount() {
-        this.props.dispatch(fetchArticles());
-    }
 
     render() {
+        const { error, loading, article } = this.props;
+
+        if (error) {
+            return <div>Error! {error.message}</div>;
+        }
+
+        if (loading) {
+            return <div>
+                Loading...
+                <div className="container" style={style}>
+                    <div className="item-1">{""}</div>
+                    <div className="item-2">{""}</div>
+                    <div className="item-3">{""}</div>
+                    <div className="item-4">{""}</div>
+                    <div className="item-5">{""}</div>
+                </div>
+            </div>;
+        }
 
         return (
             <ul>
-                {this.props.article.map((article) => {
-                    return (
+                {article.map(article => (
                         <li key={article._id} style={style}>
                             <div>
                                 <div>
@@ -26,8 +40,8 @@ class ArticleList extends Component {
                                 </div>
                             </div>
                         </li>
-                    );
-                })}
+                    )
+                )}
             </ul>
         );
 
@@ -36,7 +50,7 @@ class ArticleList extends Component {
 }
 
 const mapStateToProps = state => ({
-    articles: state.articles.items,
+    article: state.articles.items,
     loading: state.articles.loading,
     error: state.articles.error
 });
