@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import fetchArticles from '../../actions/ArticleActions';
-//import style from './SearchForm.scss';
+import style from './SearchForm.scss';
 
 class SearchForm extends Component {
     constructor(props) {
@@ -36,7 +36,11 @@ class SearchForm extends Component {
     }
 
     urlConverter() {
-        return 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=7b6416b1ffa44b7eba40cca2453a6e21' + (this.props.value.str ? '&q=' + this.props.value.str : '') + (this.props.value.bdate ? '&begin_date=' + this.props.value.bdate : '') + (this.props.value.edate ? '&end_date=' + this.props.value.edate : '');
+        let url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=7b6416b1ffa44b7eba40cca2453a6e21';
+        let str = this.props.value.str ? '&q=' + this.props.value.str : '';
+        let bdate = this.props.value.bdate ? '&begin_date=' + this.props.value.bdate : '';
+        let edate = this.props.value.edate ? '&end_date=' + this.props.value.edate : '';
+        return url + str + bdate + edate;
     }
 
     render() {
@@ -45,19 +49,24 @@ class SearchForm extends Component {
         this.props.value.edate = this.state.edate.split('-').join('');
 
         return (
-            <div>
-                <form>
-                    <input type="text" placeholder="Search..." value={this.state.value} onChange={this.handleChange}/>
-                    <input type="button" value="Submit" onClick={this.handleClick}/>
-                    <label>
-                        Begin date
-                        <input type="date" id="begin" value={this.state.bdate} onChange={this.handleChangeBdate}/>
-                    </label>
-                    <label>
-                        End date
-                        <input type="date" id="end" value={this.state.edate} onChange={this.handleChangeEdate}/>
-                    </label>
-                </form>
+            <div style={style}>
+                <div>
+                    <h1>The New York Times Search</h1>
+                </div>
+                <div>
+                    <form>
+                        <input type="text" placeholder="Search..." value={this.state.value} className={'input'} onChange={this.handleChange}/>
+                        <input type="submit" value="&#128269;" className={'button'} onClick={this.handleClick}/>
+                        <label>
+                            Begin date
+                            <input type="date" id="begin" value={this.state.bdate} onChange={this.handleChangeBdate}/>
+                        </label>
+                        <label>
+                            End date
+                            <input type="date" id="end" value={this.state.edate} onChange={this.handleChangeEdate}/>
+                        </label>
+                    </form>
+                </div>
             </div>
         );
 
