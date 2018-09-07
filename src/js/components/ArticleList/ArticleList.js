@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import fetchArticles from '../../actions/index';
 import style from './ArticleList.scss';
 
 class ArticleList extends Component {
@@ -52,7 +51,8 @@ class ArticleList extends Component {
 const mapStateToProps = state => ({
     article: state.articles.items,
     loading: state.articles.loading,
-    error: state.articles.error
+    error: state.articles.error,
+    value: state.values
 });
 
 export default connect(mapStateToProps)(ArticleList);

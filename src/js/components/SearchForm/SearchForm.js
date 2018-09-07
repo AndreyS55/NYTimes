@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import fetchArticles from '../../actions/index';
+import fetchArticles from '../../actions/ArticleActions';
 //import style from './SearchForm.scss';
 
 class SearchForm extends Component {
@@ -31,15 +31,18 @@ class SearchForm extends Component {
     }
 
     handleClick(event) {
-        this.props.dispatch(fetchArticles());
+        this.props.dispatch(fetchArticles(this.urlConverter()));
         event.preventDefault();
     }
 
+    urlConverter() {
+        return 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=7b6416b1ffa44b7eba40cca2453a6e21' + (this.props.value.str ? '&q=' + this.props.value.str : '') + (this.props.value.bdate ? '&begin_date=' + this.props.value.bdate : '') + (this.props.value.edate ? '&end_date=' + this.props.value.edate : '');
+    }
+
     render() {
-        let str = this.state.value.split(' ').join('+');
-        let bdate = this.state.bdate.split('-').join('');
-        let edate = this.state.edate.split('-').join('');
-        const foo = () => '&q=' + str +'&begin_date=' + bdate + '&end_date=' + edate;
+        this.props.value.str = this.state.value.split(' ').join('+');
+        this.props.value.bdate = this.state.bdate.split('-').join('');
+        this.props.value.edate = this.state.edate.split('-').join('');
 
         return (
             <div>
@@ -62,11 +65,11 @@ class SearchForm extends Component {
 
 }
 
-
 const mapStateToProps = state => ({
     article: state.articles.items,
     loading: state.articles.loading,
-    error: state.articles.error
+    error: state.articles.error,
+    value: state.values
 });
 
 export default connect(mapStateToProps)(SearchForm);

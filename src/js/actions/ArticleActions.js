@@ -18,10 +18,10 @@ export const fetchArticlesFailure = (error) => ({
     payload: { error }
 });
 
-const fetchArticles = () => {
+const fetchArticles = (url) => {
     return dispatch => {
         dispatch(fetchArticlesRequest());
-        return NYTApi()
+        return NYTApi(url)
             .then(json => {
                 dispatch (fetchArticlesSuccess(json.response.docs));
                 return json.response.docs;
