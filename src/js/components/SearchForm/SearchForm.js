@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import fetchArticles from '../../actions/ArticleActions';
-import style from './SearchForm.scss';
+import './SearchForm.scss';
 
 class SearchForm extends Component {
     constructor(props) {
@@ -49,7 +49,7 @@ class SearchForm extends Component {
         this.props.value.edate = this.state.edate.split('-').join('');
 
         return (
-            <div style={style}>
+            <div>
                 <div>
                     <h1>The New York Times Search</h1>
                 </div>
@@ -58,12 +58,12 @@ class SearchForm extends Component {
                         <input type="text" placeholder="Search..." value={this.state.value} className={'input'} onChange={this.handleChange}/>
                         <input type="submit" value="&#128269;" className={'button'} onClick={this.handleClick}/>
                         <label>
-                            Begin date
-                            <input type="date" id="begin" value={this.state.bdate} onChange={this.handleChangeBdate}/>
+                            <p>Begin date</p>
+                            <input type="date" id="begin" value={this.state.bdate} className={'bdate'} onChange={this.handleChangeBdate}/>
                         </label>
                         <label>
-                            End date
-                            <input type="date" id="end" value={this.state.edate} onChange={this.handleChangeEdate}/>
+                            <p>End date</p>
+                            <input type="date" id="end" value={this.state.edate} className={'edate'} onChange={this.handleChangeEdate}/>
                         </label>
                     </form>
                 </div>

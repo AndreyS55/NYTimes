@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import style from './ArticleList.scss';
+import './ArticleList.scss';
 
 class ArticleList extends Component {
 
@@ -14,7 +14,7 @@ class ArticleList extends Component {
         if (loading) {
             return <div>
                 Loading...
-                <div className="container" style={style}>
+                <div className="container">
                     <div className="item-1">{""}</div>
                     <div className="item-2">{""}</div>
                     <div className="item-3">{""}</div>
@@ -25,23 +25,25 @@ class ArticleList extends Component {
         }
 
         return (
-            <ul>
-                {article.map(article => (
-                        <li key={article._id} style={style}>
-                            <div>
+            <div className={'wrapper'}>
+                <ul>
+                    {article.map(article => (
+                            <li key={article._id}>
                                 <div>
-                                    <a href={article.web_url}>
-                                        {article.headline.main}
-                                    </a>
+                                    <div>
+                                        <a href={article.web_url}>
+                                            {article.headline.main}
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <p>{article.snippet}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    {article.snippet}
-                                </div>
-                            </div>
-                        </li>
-                    )
-                )}
-            </ul>
+                            </li>
+                        )
+                    )}
+                </ul>
+            </div>
         );
 
     }

@@ -21,19 +21,18 @@ $color: $color-1, $color-2, $color-3, $color-4, $color-5;
   }
 }
 
-body {
-  overflow: hidden;
-}
+//body {
+//  overflow: hidden;
+//}
 
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   overflow: hidden;
   animation-delay: 1s;
 }
-
 @for $i from 1 through 5 {
   .item-#{$i} {
     width: 20px;
@@ -61,8 +60,21 @@ body {
     }
   }
 }
-
 li {
+  background: azure;
   list-style-type: none;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #9bcfd3;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px #000000;
+}
+li:hover {
+  box-shadow: 3px 3px 10px #000000;
+}
+a {
+  text-decoration: none;
+}
+.wrapper {
+  margin: 0 10px auto;
 }
