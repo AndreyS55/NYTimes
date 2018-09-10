@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+//const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -24,9 +24,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 include: path.resolve(__dirname, 'src'),
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                query: {
+                    presets: ['@babel/preset-react', '@babel/preset-env']
+                }
             },
             {
                 test: /\.scss$/,
