@@ -40,7 +40,8 @@ class SearchForm extends Component {
         let str = this.props.value.str ? '&q=' + this.props.value.str : '';
         let bdate = this.props.value.bdate ? '&begin_date=' + this.props.value.bdate : '';
         let edate = this.props.value.edate ? '&end_date=' + this.props.value.edate : '';
-        return url + str + bdate + edate;
+        let page = '&page=' + this.props.value.page;
+        return url + str + bdate + edate + page;
     }
 
     render() {

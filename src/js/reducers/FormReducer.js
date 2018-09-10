@@ -3,7 +3,8 @@ import { FORM_UPDATE_VALUE } from "../actions/FormActions";
 const initialState = {
     str: '',
     bdate: '',
-    edate: ''
+    edate: '',
+    page: '0'
 };
 
 const values = (state = initialState, action) => {
@@ -13,7 +14,8 @@ const values = (state = initialState, action) => {
                 ...state,
                 str: action.payload.str,
                 bdate: action.payload.bdate,
-                edate: action.payload.edate
+                edate: action.payload.edate,
+                page: action.payload.page
             };
         default:
             return state;

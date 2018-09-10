@@ -2,7 +2,7 @@ export const FORM_UPDATE_VALUE = 'FORM_UPDATE_VALUE';
 
 export const updateForm = (str, bdate, edate) => ({
     type: FORM_UPDATE_VALUE,
-    payload: { str, bdate, edate }
+    payload: { str, bdate, edate, page }
 });
 
 const updateFormValue = () => {
