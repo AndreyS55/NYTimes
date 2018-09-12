@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './ArticleList.scss';
 
 class ArticleList extends Component {
@@ -50,11 +49,4 @@ class ArticleList extends Component {
 
 }
 
-const mapStateToProps = state => ({
-    article: state.articles.items,
-    loading: state.articles.loading,
-    error: state.articles.error,
-    value: state.values
-});
-
-export default connect(mapStateToProps)(ArticleList);
+export default ArticleList;

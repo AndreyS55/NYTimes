@@ -23,7 +23,7 @@ const articles = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                items: action.payload.articles
+                items: action.payload.articles,
             };
 
         case FETCH_ARTICLES_FAILURE:
