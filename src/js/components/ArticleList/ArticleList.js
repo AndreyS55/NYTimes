@@ -27,20 +27,19 @@ class ArticleList extends Component {
             <div className={'wrapper'}>
                 <ul>
                     {article.map(article => (
-                            <li key={article._id}>
+                        <li key={article._id}>
+                            <div>
                                 <div>
-                                    <div>
-                                        <a href={article.web_url}>
-                                            {article.headline.main}
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <p>{article.snippet}</p>
-                                    </div>
+                                    <a href={article.web_url}>
+                                        {article.headline.main}
+                                    </a>
                                 </div>
-                            </li>
-                        )
-                    )}
+                                <div>
+                                    <p>{article.snippet}</p>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
                 </ul>
             </div>
         );

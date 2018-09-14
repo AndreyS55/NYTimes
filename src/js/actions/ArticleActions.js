@@ -8,9 +8,9 @@ export const fetchArticlesRequest = () => ({
     type: FETCH_ARTICLES_REQUEST
 });
 
-export const fetchArticlesSuccess = (articles) => ({
+export const fetchArticlesSuccess = (articles, hits) => ({
     type: FETCH_ARTICLES_SUCCESS,
-    payload: { articles }
+    payload: { articles, hits }
 });
 
 export const fetchArticlesFailure = (error) => ({
@@ -18,13 +18,13 @@ export const fetchArticlesFailure = (error) => ({
     payload: { error }
 });
 
-const fetchArticles = (values) => {
+const fetchArticles = (values, page) => {
     return dispatch => {
         dispatch(fetchArticlesRequest());
-        return NYTApi(values)
+        return NYTApi(values, page)
             .then(json => {
-                dispatch (fetchArticlesSuccess(json.response.docs));
-                return json.response.docs;
+                dispatch (fetchArticlesSuccess(json.response.docs, json.response.meta.hits));
+                return [json.response.docs, json.response.meta.hits]
             })
             .catch(error => dispatch(fetchArticlesFailure(error)));
     }
