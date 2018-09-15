@@ -29,6 +29,7 @@ class Container extends React.Component {
                         error={this.props.error}
                     />
                     <Pagination hits={this.props.hits}
+                                values={this.props.values}
                                 fetchAction={this.props.fetchAction}
                     />
                 </div>
@@ -42,6 +43,7 @@ const mapStateToProps = state => ({
     hits: state.articles.hits,
     loading: state.articles.loading,
     error: state.articles.error,
+    values: state.form
 });
 
 const mapDispatchToProps = dispatch => ({
