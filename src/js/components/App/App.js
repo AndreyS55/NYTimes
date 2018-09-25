@@ -1,21 +1,20 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router-dom';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { Route } from 'react-router';
+import { ConnectedRouter } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
 import configureStore from '../../configs/configureStore';
 import Container from '../Container/Container'
 import './App.scss';
 
 const store = configureStore();
-const browserHistory = createBrowserHistory();
-const history = syncHistoryWithStore(browserHistory, store);
+const history = createBrowserHistory();
 
 const App = () => (
     <Provider store={store}>
-        <Router history={history}>
-            <Route path='/:filter?' component={Container}/>
-        </Router>
+        <ConnectedRouter history={history}>
+            <Route path="/" component={Container}/>
+        </ConnectedRouter>
     </Provider>
 );
 

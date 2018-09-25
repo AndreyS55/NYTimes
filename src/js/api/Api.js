@@ -20,7 +20,7 @@ const historyConverter = (values= {}, page = 1) => {
 
 const NYTApi = (values, page) => {
     let historyParams = historyConverter(values, page);
-    history.pushState(null, "", `${historyParams}`);
+    history.replaceState(null, "", `${historyParams}`);
     return fetch(urlConverter(values, page))
     .then(function (response) {
       return response.json()
