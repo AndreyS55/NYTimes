@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './ArticleList.scss';
 
 class ArticleList extends Component {
@@ -28,20 +27,19 @@ class ArticleList extends Component {
             <div className={'wrapper'}>
                 <ul>
                     {article.map(article => (
-                            <li key={article._id}>
+                        <li key={article._id}>
+                            <div>
                                 <div>
-                                    <div>
-                                        <a href={article.web_url}>
-                                            {article.headline.main}
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <p>{article.snippet}</p>
-                                    </div>
+                                    <a href={article.web_url}>
+                                        {article.headline.main}
+                                    </a>
                                 </div>
-                            </li>
-                        )
-                    )}
+                                <div>
+                                    <p>{article.snippet}</p>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
                 </ul>
             </div>
         );
@@ -50,11 +48,4 @@ class ArticleList extends Component {
 
 }
 
-const mapStateToProps = state => ({
-    article: state.articles.items,
-    loading: state.articles.loading,
-    error: state.articles.error,
-    value: state.values
-});
-
-export default connect(mapStateToProps)(ArticleList);
+export default ArticleList;

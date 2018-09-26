@@ -1,22 +1,20 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Route } from 'react-router';
+import { ConnectedRouter } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
 import configureStore from '../../configs/configureStore';
-import SearchForm from '../SearchForm/SearchForm';
-import ArticleList from '../ArticleList/ArticleList';
+import Container from '../Container/Container'
 import './App.scss';
 
 const store = configureStore();
+const history = createBrowserHistory();
 
 const App = () => (
     <Provider store={store}>
-        <div className={'App'}>
-            <div className={'wrapper'}>
-                <div className={'Container'}>
-                    <SearchForm />
-                    <ArticleList />
-                </div>
-            </div>
-        </div>
+        <ConnectedRouter history={history}>
+            <Route path="/" component={Container}/>
+        </ConnectedRouter>
     </Provider>
 );
 

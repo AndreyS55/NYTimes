@@ -6,6 +6,7 @@ import {
 
 const initialState = {
     items: [],
+    hits: null,
     loading: false,
     error: null
 };
@@ -23,7 +24,8 @@ const articles = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                items: action.payload.articles
+                items: action.payload.articles,
+                hits: action.payload.hits
             };
 
         case FETCH_ARTICLES_FAILURE:
