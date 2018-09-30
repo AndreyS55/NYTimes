@@ -1,0 +1,54 @@
+.header {
+  background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+}
+
+.wrapper {
+  width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {}
+
+.header__contacts {}
+
+.logo {
+  display: block;
+  max-width: 80px;
+}
+
+.logo__pic {
+  display: block;
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.developer {}
+
+.developer__link {
+  display: flex;
+  align-items: center;
+}
+
+.developer__linkIcon {
+  display: block;
+  max-width: 32px;
+}
+
+.developer__linkIconPic {
+  display: block;
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.developer__linkText {
+  color: #f0f0f0;
+  padding-left: 20px;
+
+  &:hover {
+    color: darkgray;
+  }
+}

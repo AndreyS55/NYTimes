@@ -4,7 +4,9 @@ import queryString from 'query-string';
 import SearchForm from '../SearchForm/SearchForm';
 import ArticleList from '../ArticleList/ArticleList';
 import Pagination from '../Pagination/Pagination';
+import Header from '../Header/Header';
 import fetchArticles from '../../actions/ArticleActions';
+import styles from './Container.scss';
 
 class Container extends React.Component {
     componentDidMount() {
@@ -20,18 +22,21 @@ class Container extends React.Component {
     render() {
         if(this.props.hits <= 10) {
             return (
-                <div className={'Container'}>
+                <div className={styles.container}>
+                    <Header />
                     <SearchForm onSubmit={(values) => this.props.fetchAction(values)}/>
                     <ArticleList
                         article={this.props.article}
                         loading={this.props.loading}
                         error={this.props.error}
                     />
+                    <div className={styles.empty}></div>
                 </div>
             )
         }
             return (
-                <div className={'Container'}>
+                <div className={styles.container}>
+                    <Header />
                     <SearchForm onSubmit={(values) => this.props.fetchAction(values)}/>
                     <ArticleList
                         article={this.props.article}
@@ -42,6 +47,7 @@ class Container extends React.Component {
                                 values={this.props.values}
                                 fetchAction={this.props.fetchAction}
                     />
+                    <div className={styles.empty}></div>
                 </div>
             )
     }

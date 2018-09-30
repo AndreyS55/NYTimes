@@ -24,7 +24,7 @@ class ArticleList extends Component {
         }
 
         return (
-            <div className={'wrapper'}>
+            <div>
                 <ul>
                     {article.map(article => (
                         <li key={article._id}>
