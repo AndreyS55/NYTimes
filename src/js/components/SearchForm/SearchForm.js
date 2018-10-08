@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
+import DatePicker from '../Datepicker/Datepicker';
 import styles from './SearchForm.scss';
 
 class SearchForm extends Component {
@@ -9,7 +10,6 @@ class SearchForm extends Component {
 
         return (
             <div className={styles.wrapper}>
-                <h2 className={styles.search__header}>Search for the articles you want</h2>
                 <form onSubmit={handleSubmit} className={styles.search__form}>
                     <div className={styles.search__field}>
                         <Field
@@ -22,20 +22,20 @@ class SearchForm extends Component {
                     </div>
                     <div className={styles.search__datepickers}>
                         <label>
-                            <p>Begin date</p>
+                            <h4 className={styles.datepicker__name}>Begin date</h4>
                             <Field
                                 name="startDate"
-                                component="input"
-                                type="date"
-                                className={styles.search__datepickerStart} />
+                                component={DatePicker}
+                                // className={styles.search__datepickerStart}
+                            />
                         </label>
                         <label>
-                            <p>End date</p>
+                            <h4 className={styles.datepicker__name}>End date</h4>
                             <Field
                                 name="endDate"
-                                component="input"
-                                type="date"
-                                className={styles.search__datepickerEnd} />
+                                component={DatePicker}
+                                // className={styles.search__datepickerEnd}
+                            />
                         </label>
                     </div>
 

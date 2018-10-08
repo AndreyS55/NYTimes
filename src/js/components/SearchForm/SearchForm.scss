@@ -5,14 +5,9 @@
   margin: 20px auto 0;
 }
 
-.search__header {
-  margin: 0;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
 .search__form {
+  padding-top: 50px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,6 +63,11 @@
   flex-direction: row;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.datepicker__name {
+  margin: 0;
+  text-align: center;
 }
 
 .search__datepickerStart {}

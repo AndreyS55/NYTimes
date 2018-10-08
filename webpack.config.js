@@ -33,6 +33,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
+                include: path.resolve(__dirname, 'src/js'),
                 use: [
                     {
                         loader: "style-loader"
@@ -49,6 +50,25 @@ module.exports = {
                         loader: "sass-loader"
                     }
                 ]
+            },
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, 'src/scss'),
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader"
+                    },
+                    {
+                        loader: "sass-loader"
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: "css-loader"
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
