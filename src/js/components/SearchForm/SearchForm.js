@@ -21,20 +21,18 @@ class SearchForm extends Component {
                         <button type="submit" className={styles.search__submit} />
                     </div>
                     <div className={styles.search__datepickers}>
-                        <label>
+                        <label className={styles.search__datepickerStart}>
                             <h4 className={styles.datepicker__name}>Begin date</h4>
                             <Field
                                 name="startDate"
                                 component={DatePicker}
-                                // className={styles.search__datepickerStart}
                             />
                         </label>
-                        <label>
+                        <label className={styles.search__datepickerEnd}>
                             <h4 className={styles.datepicker__name}>End date</h4>
                             <Field
                                 name="endDate"
                                 component={DatePicker}
-                                // className={styles.search__datepickerEnd}
                             />
                         </label>
                     </div>

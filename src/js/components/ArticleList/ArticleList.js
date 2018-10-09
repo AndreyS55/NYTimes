@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import './ArticleList.scss';
+import styles from './ArticleList.scss';
 
 class ArticleList extends Component {
+    dateConverter(date) {
+        let myDate = new Date(date);
+        return myDate.toDateString();
+    }
 
     render() {
         const { error, loading, article } = this.props;
@@ -11,29 +15,30 @@ class ArticleList extends Component {
         }
 
         if (loading) {
-            return <div>
-                Loading...
-                <div className="container">
-                    <div className="item-1">{""}</div>
-                    <div className="item-2">{""}</div>
-                    <div className="item-3">{""}</div>
-                    <div className="item-4">{""}</div>
-                    <div className="item-5">{""}</div>
+            return <div className={styles.loader__wrapper}>
+                <div className={styles.loader__container}>
+                    <div className={styles.loader__item}>{""}</div>
+                    <div className={styles.loader__item}>{""}</div>
+                    <div className={styles.loader__item}>{""}</div>
+                    <div className={styles.loader__item}>{""}</div>
+                    <div className={styles.loader__item}>{""}</div>
                 </div>
             </div>;
         }
 
         return (
-            <div>
-                <ul>
+            <div className={styles.wrapper}>
+                <ul className={styles.article__list}>
                     {article.map(article => (
-                        <li key={article._id}>
+                        <li key={article._id} className={styles.article__item}>
+                            <div>{article.multimedia.map(img => <img src={img.url} alt=""/>)}</div>
                             <div>
                                 <div>
                                     <a href={article.web_url}>
                                         {article.headline.main}
                                     </a>
                                 </div>
+                                <div className={styles.item__pubDate}>{this.dateConverter(article.pub_date)}</div>
                                 <div>
                                     <p>{article.snippet}</p>
                                 </div>

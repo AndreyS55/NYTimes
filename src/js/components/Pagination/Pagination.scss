@@ -1,0 +1,30 @@
+.wrapper {
+  background: #fff;
+  width: 1170px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.pagination {
+  padding: 30px 0;
+
+}
+
+.pagination__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pagination__item {
+  padding-right: 10px;
+  font-weight: bold;
+  font-size: large;
+}
+.pagination__link {
+  &:hover {
+    color: #e0dc41;
+
+  }
+}
+
