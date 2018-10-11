@@ -50,6 +50,12 @@ class ArticleList extends Component {
                                 <div>
                                     <p>{article.snippet}</p>
                                 </div>
+                                <div className={styles.keywords}>{article.keywords.map(keyword => (
+                                    <a key={keyword.rank} href={`?&query=${keyword.value}`}>
+                                        <div className={styles.keywords__item}>{keyword.value}</div>
+                                    </a>
+                                ))}
+                                </div>
                             </div>
                         </li>
                     ))}

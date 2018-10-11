@@ -6,8 +6,6 @@ import renderDatePicker from '../Datepicker/Datepicker';
 import styles from './SearchForm.scss';
 
 const queryParams = queryString.parse(location.search);
-// const insertStartDate = queryParams.begin_date ? queryParams.begin_date.slice(0,4) + '-' + queryParams.begin_date.slice(4,6) + '-' + queryParams.begin_date.slice(6) : null;
-// const insertEndDate = queryParams.end_date ? queryParams.end_date.slice(0,4) + '-' + queryParams.end_date.slice(4,6) + '-' + queryParams.end_date.slice(6) : null;
 
 class SearchForm extends Component {
 
