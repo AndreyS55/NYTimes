@@ -15,6 +15,32 @@
   border: 1px solid #000000;
   display: flex;
   flex-direction: row;
+  &:hover {
+    box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+}
+
+.image__link {
+  display: block;
+  max-width: 200px;
+}
+
+.article__image {
+  display: block;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.article__description {
+  padding-left: 20px;
+}
+
+.article__headline {
+  color: black;
+  font-weight: bold;
+  &:hover {
+    color: #1795FF;
+  }
 }
 
 .item__pubDate {

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
-import DatePicker from '../Datepicker/Datepicker';
+import queryString from 'query-string';
+import renderDatePicker from '../Datepicker/Datepicker';
 import styles from './SearchForm.scss';
+
+const queryParams = queryString.parse(location.search);
+// const insertStartDate = queryParams.begin_date ? queryParams.begin_date.slice(0,4) + '-' + queryParams.begin_date.slice(4,6) + '-' + queryParams.begin_date.slice(6) : null;
+// const insertEndDate = queryParams.end_date ? queryParams.end_date.slice(0,4) + '-' + queryParams.end_date.slice(4,6) + '-' + queryParams.end_date.slice(6) : null;
 
 class SearchForm extends Component {
 
@@ -25,14 +31,14 @@ class SearchForm extends Component {
                             <h4 className={styles.datepicker__name}>Begin date</h4>
                             <Field
                                 name="startDate"
-                                component={DatePicker}
+                                component={renderDatePicker}
                             />
                         </label>
                         <label className={styles.search__datepickerEnd}>
                             <h4 className={styles.datepicker__name}>End date</h4>
                             <Field
                                 name="endDate"
-                                component={DatePicker}
+                                component={renderDatePicker}
                             />
                         </label>
                     </div>
@@ -47,5 +53,15 @@ class SearchForm extends Component {
 SearchForm = reduxForm ({
     form: 'Search',
 }) (SearchForm);
+
+SearchForm = connect(
+    state => ({
+        initialValues: {
+            searchText: queryParams.query,
+            startDate: queryParams.begin_date ? queryParams.begin_date.slice(0,4) + '-' + queryParams.begin_date.slice(4,6) + '-' + queryParams.begin_date.slice(6) : null,
+            endDate: queryParams.end_date ? queryParams.end_date.slice(0,4) + '-' + queryParams.end_date.slice(4,6) + '-' + queryParams.end_date.slice(6) : null,
+        }
+    })
+)(SearchForm);
 
 export default SearchForm;

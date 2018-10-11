@@ -8,6 +8,8 @@ import Header from '../Header/Header';
 import fetchArticles from '../../actions/ArticleActions';
 import styles from './Container.scss';
 
+const now = new Date().getFullYear() +'-'+ String(new Date().getMonth()+1).replace(/^(.)$/, "0$1") + '-' + String(new Date().getDate()).replace(/^(.)$/, "0$1");
+
 class Container extends React.Component {
     componentDidMount() {
         const queryParams = queryString.parse(this.props.location.search);
@@ -16,7 +18,7 @@ class Container extends React.Component {
             this.props.values.startDate = queryParams.begin_date;
             this.props.values.endDate = queryParams.end_date;
             this.props.fetchAction(this.props.values, queryParams.page);
-        }
+        } else {this.props.fetchAction({startDate: now})}
     }
 
     render() {

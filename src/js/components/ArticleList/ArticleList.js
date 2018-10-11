@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import noImage from '../../../img/no-image.png';
 import styles from './ArticleList.scss';
 
 class ArticleList extends Component {
@@ -9,6 +10,7 @@ class ArticleList extends Component {
 
     render() {
         const { error, loading, article } = this.props;
+        const imgUrl = 'https://static01.nyt.com/';
 
         if (error) {
             return <div>Error! {error.message}</div>;
@@ -31,10 +33,16 @@ class ArticleList extends Component {
                 <ul className={styles.article__list}>
                     {article.map(article => (
                         <li key={article._id} className={styles.article__item}>
-                            <div>{article.multimedia.map(img => <img src={img.url} alt=""/>)}</div>
                             <div>
+                                <a href={article.web_url} className={styles.image__link}>
+                                    <img src={article.multimedia[0] ? `${imgUrl}${article.multimedia[0].url}` : noImage}
+                                         alt="article image"
+                                         className={styles.article__image}/>
+                                </a>
+                            </div>
+                            <div className={styles.article__description}>
                                 <div>
-                                    <a href={article.web_url}>
+                                    <a href={article.web_url} className={styles.article__headline}>
                                         {article.headline.main}
                                     </a>
                                 </div>
